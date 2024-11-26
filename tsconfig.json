@@ -2,7 +2,6 @@
   "extends": "@tsconfig/node16/tsconfig.json",
   "exclude": ["node_modules", "dist", "**/*.test.ts", "src/test-utils.ts"],
   "compilerOptions": {
-    // TODO: Remove "dom" from this when support for Node 16 is dropped
     "lib": ["es2021", "dom"],
     "outDir": "./dist",
     "rootDir": ".",
@@ -17,13 +16,23 @@
     "skipLibCheck": true,
     "stripInternal": true,
     "types": ["jest"],
-    "moduleResolution": "node",
+    "module": "CommonJS",
+    "moduleResolution": "Node",
     "allowJs": true,
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "allowArbitraryExtensions": true,
+    "moduleDetection": "force"
   },
   "include": [
     "src/**/*",
     "command.ts",
     "login.ts"
-  ]
+  ],
+  "ts-node": {
+    "moduleTypes": {
+      "**/*": "cjs"
+    },
+    "transpileOnly": true,
+    "files": true
+  }
 }

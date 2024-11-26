@@ -5,9 +5,11 @@ import dotenv from 'dotenv';
 // Load environment variables
 dotenv.config();
 
+// Set up global executeCommand
 declare global {
     var executeCommand: (commandLine: string) => Promise<string | void>;
 }
+globalThis.executeCommand = executeCommand;
 
 async function startTerminal() {
     // Initialize terminal server on port 3000
@@ -15,9 +17,6 @@ async function startTerminal() {
     
     // Log startup
     terminal.log('info', '🚀 Starting Twitter AI Terminal...');
-
-    // Set up global command handler
-    global.executeCommand = executeCommand;
 
     return terminal;
 }

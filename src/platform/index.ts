@@ -1,14 +1,23 @@
-import { PlatformExtensions, genericPlatform } from './platform-interface';
+import { PlatformExtensions } from './platform-interface';
 
-export * from './platform-interface';
+// Define platform constants
+export const PLATFORM_NODE = process.env.NODE_ENV !== 'test';
+export const PLATFORM_NODE_JEST = process.env.NODE_ENV === 'test';
 
-declare const PLATFORM_NODE: boolean;
-declare const PLATFORM_NODE_JEST: boolean;
+// Re-export the interface
+export type { PlatformExtensions };
 
 export class Platform implements PlatformExtensions {
-  async randomizeCiphers() {
-    const platform = await Platform.importPlatform();
-    await platform?.randomizeCiphers();
+  private static instance: Platform;
+  private platformImpl: PlatformExtensions | null = null;
+
+  private constructor() {}
+
+  public static getInstance(): Platform {
+    if (!Platform.instance) {
+      Platform.instance = new Platform();
+    }
+    return Platform.instance;
   }
 
   private static async importPlatform(): Promise<null | PlatformExtensions> {
@@ -16,12 +25,16 @@ export class Platform implements PlatformExtensions {
       const { platform } = await import('./node');
       return platform as PlatformExtensions;
     } else if (PLATFORM_NODE_JEST) {
-      // Jest gets unhappy when using an await import here, so we just use require instead.
-      // eslint-disable-next-line @typescript-eslint/no-var-requires
-      const { platform } = require('./node');
+      const { platform } = await import('../__mocks__/platform');
       return platform as PlatformExtensions;
     }
+    return null;
+  }
 
-    return genericPlatform;
+  public async randomizeCiphers(): Promise<void> {
+    if (!this.platformImpl) {
+      this.platformImpl = await Platform.importPlatform();
+    }
+    return this.platformImpl?.randomizeCiphers() ?? Promise.resolve();
   }
 }

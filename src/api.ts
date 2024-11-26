@@ -50,7 +50,7 @@ export async function requestApi<T>(
   url: string,
   auth: TwitterAuth,
   method: 'GET' | 'POST' = 'GET',
-  platform: PlatformExtensions = new Platform(),
+  platform: PlatformExtensions = Platform.getInstance(),
 ): Promise<RequestApiResult<T>> {
   const headers = new Headers();
   await auth.installTo(headers, url);
@@ -186,4 +186,9 @@ export function addApiParams(
     'mediaStats,highlightedLabel,hasNftAvatar,voiceInfo,birdwatchPivot,enrichments,superFollowMetadata,unmentionInfo,editControl,collab_control,vibe',
   );
   return params;
+}
+
+export class Api {
+  platform: PlatformExtensions = Platform.getInstance();
+  // ... rest of the class implementation
 }

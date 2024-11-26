@@ -2,5 +2,9 @@
 module.exports = {
   preset: 'ts-jest',
   testEnvironment: 'node',
-  setupFiles: ['dotenv/config', './test-setup.js'],
+  moduleFileExtensions: ['ts', 'js'],
+  setupFiles: ['<rootDir>/jest.setup.js'],
+  moduleNameMapper: {
+    '\\.(jpg|jpeg|png|gif|mp4|webm)$': '<rootDir>/__mocks__/fileMock.js',
+  },
 };

@@ -805,4 +805,35 @@ export class Scraper {
 
     return res.value;
   }
+
+  /**
+   * Send a tweet with optional media attachments
+   * @param text - The tweet text content
+   * @param mediaFiles - Array of paths to media files to attach
+   */
+  async tweet(text: string, mediaFiles?: string[]): Promise<void> {
+    // Implementation will be added later
+    return Promise.resolve();
+  }
+
+  /**
+   * Quote a tweet with optional media attachments
+   * @param tweetId - ID of the tweet to quote
+   * @param text - The quote text content
+   * @param mediaFiles - Array of paths to media files to attach
+   */
+  async quoteTweet(tweetId: string, text: string, mediaFiles?: string[]): Promise<void> {
+    // Implementation will be added later
+    return Promise.resolve();
+  }
+
+  /**
+   * Get photos from a specific tweet
+   * @param tweetId - ID of the tweet to get photos from
+   * @returns Array of photo URLs
+   */
+  async getTweetPhotos(tweetId: string): Promise<string[]> {
+    // Implementation will be added later
+    return [];
+  }
 }
