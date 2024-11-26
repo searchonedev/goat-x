@@ -5,7 +5,7 @@
     // TODO: Remove "dom" from this when support for Node 16 is dropped
     "lib": ["es2021", "dom"],
     "outDir": "./dist",
-    "rootDir": "./src",
+    "rootDir": ".",
     "sourceMap": true,
     "declaration": true,
     "declarationMap": true,
@@ -16,6 +16,14 @@
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
     "stripInternal": true,
-    "types": ["jest"]
-  }
+    "types": ["jest"],
+    "moduleResolution": "node",
+    "allowJs": true,
+    "resolveJsonModule": true
+  },
+  "include": [
+    "src/**/*",
+    "command.ts",
+    "login.ts"
+  ]
 }

@@ -28,15 +28,26 @@
     "docs:generate": "typedoc --options typedoc.json",
     "docs:deploy": "npm run docs:generate && gh-pages -d docs",
     "format": "prettier --write src/**/*.ts",
-    "test": "jest"
+    "test": "jest",
+    "terminal": "ts-node src/terminal/runner.ts",
+    "terminal:dev": "nodemon src/terminal/runner.ts"
   },
   "dependencies": {
     "@sinclair/typebox": "^0.32.20",
+    "@types/dotenv": "^6.1.1",
+    "@types/express": "^5.0.0",
+    "@types/socket.io": "^3.0.1",
+    "@types/styled-components": "^5.1.34",
+    "express": "^4.21.1",
+    "goat-x": "^1.1.0",
     "headers-polyfill": "^3.1.2",
     "json-stable-stringify": "^1.0.2",
     "node-fetch": "^3.3.2",
     "otpauth": "^9.2.2",
     "set-cookie-parser": "^2.6.0",
+    "socket.io": "^4.8.1",
+    "socket.io-client": "^4.8.1",
+    "styled-components": "^6.1.13",
     "tough-cookie": "^4.1.2",
     "tslib": "^2.5.2",
     "twitter-api-v2": "^1.18.2"

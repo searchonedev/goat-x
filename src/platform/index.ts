@@ -13,7 +13,7 @@ export class Platform implements PlatformExtensions {
 
   private static async importPlatform(): Promise<null | PlatformExtensions> {
     if (PLATFORM_NODE) {
-      const { platform } = await import('./node/index.js');
+      const { platform } = await import('./node');
       return platform as PlatformExtensions;
     } else if (PLATFORM_NODE_JEST) {
       // Jest gets unhappy when using an await import here, so we just use require instead.

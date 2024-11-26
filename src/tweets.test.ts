@@ -484,7 +484,7 @@ test('scraper can send a tweet with image and video', async () => {
 
 test('scraper can quote tweet without media', async () => {
   const scraper = await getScraper();
-  const quotedTweetId = '1776276954435481937';
+  const quotedTweetId = '1858985724894474474';
   const quoteText = `Testing quote tweet without media ${Date.now()}`;
 
   // Send a quote tweet without any media attachments
@@ -497,7 +497,7 @@ test('scraper can quote tweet without media', async () => {
 
 test('scraper can quote tweet with image and video', async () => {
   const scraper = await getScraper();
-  const quotedTweetId = '1776276954435481937';
+  const quotedTweetId = '1858985724894474474';
   const quoteText = `Testing quote tweet with image and video ${Date.now()}`;
 
   // Read test image and video files from the test-assets directory
@@ -526,7 +526,7 @@ test('scraper can quote tweet with image and video', async () => {
 
 test('scraper can quote tweet with media', async () => {
   const scraper = await getScraper();
-  const quotedTweetId = '1776276954435481937';
+  const quotedTweetId = '1858985724894474474';
   const quoteText = `Testing quote tweet with media ${Date.now()}`;
 
   // Read test image file
